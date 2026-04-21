@@ -2,7 +2,7 @@ import genToken from "../config/token.js";
 import User from "../model/user.model.js";
 import bcrypt from "bcryptjs";
 
-// ================= SIGNUP =================
+
 export const sighUp = async (req, res) => {
   try {
     const { name, email, password } = req.body || {};
@@ -30,7 +30,7 @@ export const sighUp = async (req, res) => {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+      maxAge: 7 * 24 * 60 * 60 * 1000, 
     });
 
     return res.status(201).json({
@@ -43,7 +43,7 @@ export const sighUp = async (req, res) => {
   }
 };
 
-// ================= LOGIN =================
+
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body || {};
@@ -81,7 +81,7 @@ export const login = async (req, res) => {
   }
 };
 
-// ================= LOGOUT =================
+
 export const logOut = async (req, res) => {
   try {
     res.clearCookie("token", {
